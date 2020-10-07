@@ -1,0 +1,17 @@
+---
+stack: cflinuxfs3
+buildpack: staticfile_buildpack
+applications:
+  - name: proxy
+    memory: 256M
+routes:
+  - route: fec-feature-proxy.app.cloud.gov
+services:
+  - fec-creds-feature
+env:
+  PROXIES: |
+    {
+      "/": "https://fec-feature-cms.app.cloud.gov"
+    }
+  S3_BUCKET_URL: "https://cg-445c78e1-423f-4166-b380-4add63d9f37d.s3-us-gov-west-1.amazonaws.com"
+  S3_LEGAL_AND_DOWNLOADS_URL: "https://cg-b7414a07-e23d-4c51-b411-69e83c1d8d12.s3-us-gov-west-1.amazonaws.com"
